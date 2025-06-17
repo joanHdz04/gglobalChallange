@@ -8,11 +8,13 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DriverUtils {
 
   private static final Logger LOG = LogManager.getLogger(DriverUtils.class);
   private static WebDriver driver;
+  private static WebDriverWait wait;
   public final static int TIMEOUT = 5;
   ChromeOptions options = new ChromeOptions();
 
@@ -22,11 +24,14 @@ public class DriverUtils {
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
+        LOG.info("Using chrome browser");
         break;
       default:
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
         LOG.info("Add default browser here");
         break;
     }
@@ -43,6 +48,10 @@ public class DriverUtils {
 
   public static WebDriver getDriver() {
     return driver;
+  }
+
+  public static WebDriverWait getWait() {
+    return wait;
   }
 
   public void changeSize(String size, int width, int height) {
