@@ -23,5 +23,7 @@ public interface Constants {
   String NAVBAR_INVENTORY = "//span[text()='Inventory']";
   String NAVBAR_SHIPPING_NOTICES = "//span[text()='Shipping Notices']";
   String NAVBAR_RETURNS = "//span[text()='Returns']";
+  String RMA_INPUT = "number";
+  String TRACKING_INPUT = "trackingNumber";
 
 }

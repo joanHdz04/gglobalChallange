@@ -1,6 +1,7 @@
 package com.gglobal.pages;
 
 import com.gglobal.utils.DriverUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -54,5 +55,8 @@ public abstract class BasePage {
   public void clickIfEnable(WebElement webElement){
     wait.until(ExpectedConditions.elementToBeClickable(webElement));
     webElement.click();
+  }
+  public void waitRowsToBeN(String className,int expectedRows){
+    wait.until(ExpectedConditions.numberOfElementsToBe(By.className(className),expectedRows));
   }
 }

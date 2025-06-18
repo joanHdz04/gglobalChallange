@@ -2,6 +2,8 @@ package com.gglobal.stepDefinitions;
 
 import com.gglobal.pages.GGlobalCommons;
 import com.gglobal.pages.LoginPage;
+import com.gglobal.pages.NavBarPage;
+import com.gglobal.pages.ReturnsPage;
 import com.gglobal.utils.DriverUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,8 +14,8 @@ public class StepDefinitions {
 
   private LoginPage loginPage = new LoginPage();
   private GGlobalCommons gGlobalCommons =new GGlobalCommons();
-
-  private String currentPage;
+  private NavBarPage navBarPage = new NavBarPage();
+  private ReturnsPage returnsPage = new ReturnsPage();
 
   @Given("user goes to the start url {string}")
   public void goToStartUrl(String baseUrl) {
@@ -70,6 +72,24 @@ public class StepDefinitions {
     loginPage.backToLoginClick();
   }
 
+  @When("user sees success login alert")
+  public void successLogin(){
+    gGlobalCommons.getPageAlert();
+  }
+  @When("user clicks on returns on navigation bar")
+  public void clickOnReturnsInNavBar(){
+    navBarPage.navBarReturnsClick();
+  }
+
+  @When("user writes {string} in RMA number field")
+  public void setRMANumber(String rmaNumber){
+    returnsPage.setRmaInput(rmaNumber+"\n");
+  }
+
+  @When("user writes {string} in tracking field")
+  public void setTrackingNumber(String tracking){
+    returnsPage.setTrackingInput(tracking+"\n");
+  }
   @Then("user is now on {string} page")
   public void validateCurrentPage(String expectedPage){
     String actualPage= DriverUtils.getDriver().getCurrentUrl();
@@ -112,6 +132,11 @@ public class StepDefinitions {
     String expected = msg+mail;
     String actual= loginPage.getLinkSentMsgTxt()+loginPage.getlinkSentMailTxt();
     Assert.assertEquals(actual,expected);
+  }
+
+  @Then("the data table displays {string} in the {string} column in the {int} row")
+  public void validateDataTable(String data, String columnName, int row){
+    Assert.assertEquals(returnsPage.getDataTableCell(columnName,row-1,1),data);
   }
 
 }
