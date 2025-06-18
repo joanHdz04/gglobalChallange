@@ -27,23 +27,23 @@ public class NavBarPage extends BasePage {
   WebElement navBarReturns;
 
   public void navBarDashboardClick(){
-    navBarDashboard.click();
+    clickIfVisible(navBarDashboard);
   }
 
   public void navBarOrdersClick(){
-    navBarOrdersMonitor.click();
+    clickIfVisible(navBarOrdersMonitor);
   }
 
   public void navBarInventoryClick(){
-    navBarInventory.click();
+    clickIfVisible(navBarInventory);
   }
 
   public void navBarShippingNoticesClick(){
-    navBarShippingNotices.click();
+    clickIfVisible(navBarShippingNotices);
   }
 
   public void navBarReturnsClick(){
-    navBarReturns.click();
+    clickIfVisible(navBarReturns);
   }
 
 }
