@@ -18,5 +18,10 @@ public interface Constants {
   String SEND_EMAIL_INPUT = "//form/div/div[3]/div/div/input";
   String SEND_EMAIL_INPUT_ERROR = "//form/div/div[3]/div/p";
   String WELCOME_HEADER = "//form/div/div[1]/h6/div/b[2]";
+  String NAVBAR_DASHBOARD = "//span[text()='Dashboard']";
+  String NAVBAR_ORDERS_MONITOR = "//span[text()='Orders Monitor']";
+  String NAVBAR_INVENTORY = "//span[text()='Inventory']";
+  String NAVBAR_SHIPPING_NOTICES = "//span[text()='Shipping Notices']";
+  String NAVBAR_RETURNS = "//span[text()='Returns']";
 
 }
